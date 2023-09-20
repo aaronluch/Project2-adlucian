@@ -44,14 +44,15 @@ public:
     void enqueue(Object item){
         // store item in a node in heap memory
         Node<Object>* newNodePtr = new Node<Object>(item);
-        // if the queue is empty, both front and back need to point to the new node
-        if (back == nullptr){
-            front = newNodePtr;
-            back = newNodePtr;
+        // enqueued item goes to the back of the queue
+        if (back != nullptr){
+            back ->setNext(newNodePtr);
         }
-        else{
-            newNodePtr->setNext(back);
-            back = newNodePtr;
+        back = newNodePtr;
+
+        // if the front is also currently empty, the front pointer needs to also be updated
+        if (front == nullptr){
+            front = newNodePtr;
         }
     }
 

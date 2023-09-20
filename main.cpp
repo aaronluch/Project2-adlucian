@@ -7,48 +7,50 @@
  */
 
 #include "Song.h"
+#include "Queue.h"
+#include "Stack.h"
+#include "Node.h"
+
 using namespace std;
 
 int main(){
-    std::vector<Song> songs;
+    // creating queue objects to demonstrate methods work correctly
+    Queue<int> integerQueue;
+    Queue<string> stringQueue;
 
-    // Separator for formatting and presentation
-    int separatorLength = 42;
-    string separator (separatorLength, '-');
+    // Testing integerQueue object
+    integerQueue.enqueue(1); // add item with value 1 to the queue
+    integerQueue.enqueue(2); // add item with value 2 to the queue
+    integerQueue.enqueue(3); // add item with value 3 to the queue
+    integerQueue.dequeue(); // dequeue front value
 
-    // Read data from file into songs vector
-    getDataFromFile(songs);
+    // using search function to show it works properly (0 = false, 1 = true)
+    int intSearch = 1;
+    bool intFound = integerQueue.search(intSearch);
+    cout << "Item with value '" << intSearch << "' found: " << intFound << endl;
+    intSearch = 2;
+    bool intFound2 = integerQueue.search(intSearch);
+    cout << "Item with value '" << intSearch << "' found: " << intFound2 << endl;
 
-    // Testing getters and setters functions to verify everything working correctly
-    testSongs();
+    integerQueue.print(); // print the values
+    cout << endl;
 
-    // Return size of the vector
-    cout << "\n" << separator << "\nSize of Vector: " << songs.size()
-    << " songs\n"<< separator << endl;
+    // Testing stringQueue object
+    stringQueue.enqueue("first"); //
+    stringQueue.enqueue("aaron"); //
+    stringQueue.enqueue("luciano"); //
+    stringQueue.dequeue(); // dequeue front value
+    stringQueue.dequeue(); // dequeue front value
 
-    // Prints total duration of all songs
-    cout << "Total Duration of All Songs: " << calculateTotalDuration(songs) << " (ms)" << endl;
+    // using search function to show it works properly (0 = false, 1 = true)
+    string stringSearch = "aaron";
+    bool stringFound = stringQueue.search(stringSearch);
+    cout << "Item with value '" << stringSearch << "' found: " << stringFound << endl;
+    stringSearch = "luciano";
+    bool stringFound2 = stringQueue.search(stringSearch);
+    cout << "Item with value '" << stringSearch << "' found: " << stringFound2 << endl;
 
-    // Converting total duration into hours and minutes
-    int durationHours = static_cast<int>(calculateTotalDuration(songs) / 3600000); // ms to hours
-    int durationMinutes = static_cast<int>(calculateTotalDuration(songs) % 3600000 / 60000);
-    cout << "or\nTotal Duration of All Songs: " << durationHours << " hr " << durationMinutes
-    << " min" << endl;
-
-    // Prints average duration of all songs in ms
-    cout << separator << "\nAverage Duration: " << averageDuration(songs) << " (ms)\nor" << endl;
-
-    // Converting average duration into xx:xx format (min:sec)
-    int minutes = static_cast<int>(averageDuration(songs)) / 60000; // ms to minutes
-    int seconds = (static_cast<int>(averageDuration(songs)) % 60000) / 1000; // remaining seconds
-
-    // Prints average duration in xx:xx format
-    cout << "Average Duration: " << minutes << ":" <<
-    seconds << " (min:sec)\n" << separator << endl;
-
-    // Prints average release year from all songs
-    cout << "Average Year of Release: " << getAverageReleaseYears(songs) <<
-    "\n" << separator << endl;
+    stringQueue.print(); // print the values
 
     return 0;
 }
