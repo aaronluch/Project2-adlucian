@@ -1,3 +1,0 @@
-F:/Code/Project2-adlucian/cmake-build-debug/CMakeFiles/CS2240_Project_2.dir
-F:/Code/Project2-adlucian/cmake-build-debug/CMakeFiles/edit_cache.dir
-F:/Code/Project2-adlucian/cmake-build-debug/CMakeFiles/rebuild_cache.dir
