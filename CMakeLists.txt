@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(CS2240_Project_1)
+project(CS2240_Project_2)
 
 set(CMAKE_CXX_STANDARD 17)
 
