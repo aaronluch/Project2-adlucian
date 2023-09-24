@@ -96,6 +96,7 @@ public:
         }
         cout << "End of Queue" << endl;
     }
+
 };
 
 #endif //CS2240_PROJECT_1_QUEUE_H

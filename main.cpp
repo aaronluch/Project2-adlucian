@@ -15,8 +15,18 @@ using namespace std;
 
 int main(){
     // creating queue objects to demonstrate methods work correctly
-    Queue<int> integerQueue;
-    Queue<string> stringQueue;
+    Queue<int> integerQueue; // create a queue object for integers
+    Queue<string> stringQueue; // create a queue object for strings
+    Queue<Song> songQueue; // create a queue object for type Song
+    Stack<Song> songStack; // create a stack object for type Song
+
+
+    // Create a vector to store the Song objects
+    vector<Song> songs;
+
+    // Read data from the CSV into the vector
+    getDataFromFile(songs);
+
 
     // Testing integerQueue object
     integerQueue.enqueue(1); // add item with value 1 to the queue
@@ -51,6 +61,31 @@ int main(){
     cout << "Item with value '" << stringSearch << "' found: " << stringFound2 << endl;
 
     stringQueue.print(); // print the values
+
+    // make a loop to print and enqueue the first ten songs from project 1 vector (onto the queue)
+    int j = 0;
+    for (j = 0; j <= 10 && j < songs.size(); j++){
+        cout << "--- ENQUEUED SONG ---\n" << songs[j] << endl;
+        songQueue.enqueue(songs[j]);
+    }
+
+    // dequeue from the queue and push onto the stack
+    int songQueueSize = 10;
+    while (songQueueSize != 0){
+        Song song = songQueue.dequeue();
+        songStack.push(song);
+        songQueueSize--;
+    }
+
+    // loop to pop and print 10 objects
+    int k = 0;
+    while (k < 10){
+        Song popped = songStack.pop();
+        cout << "--- POPPED SONG ---\n" << popped << endl;
+        k++;
+    }
+    // print stack afterwords to show it's empty
+    songStack.print();
 
     return 0;
 }

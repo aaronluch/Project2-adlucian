@@ -11,9 +11,11 @@
 
 #include <string>
 #include <iostream>
+#include <ostream>
 #include <fstream>
 #include <vector>
 #include <cassert>
+#include "Stack.h"
 using namespace std;
 using std::string;
 
@@ -59,6 +61,34 @@ public:
         this->release = release;
         this->genre = genre;
         this->duration = duration;
+    }
+
+    // Copy Constructor
+    Song(const Song& other){
+        this->rowid = other.rowid;
+        this->track = other.track;
+        this->album = other.album;
+        this->artist = other.artist;
+        this->release = other.release;
+        this->genre = other.genre;
+        this->duration = other.duration;
+    }
+
+    // Copy Assignment Operator
+    Song& operator=(const Song& other){
+        if(this == &other){
+            return * this;
+        }
+        // copying variable from 'other' to 'this'
+        this->rowid = other.rowid;
+        this->track = other.track;
+        this->album = other.album;
+        this->artist = other.artist;
+        this->release = other.release;
+        this->genre = other.genre;
+        this->duration = other.duration;
+
+        return *this;
     }
 
     // Getters
@@ -116,6 +146,18 @@ public:
 
     void setDuration(int duration){
         this->duration = duration;
+    }
+
+    // overload method for printing of song objects
+    friend std::ostream& operator<<(std::ostream& os, const Song& song){
+        os << "Track: " << song.getTrack() << endl;
+        os << "Album: " << song.getAlbum() << endl;
+        os << "Artist: " << song.getArtist() << endl;
+        os << "Release Date: " << song.getRelease() << endl;
+        os << "Genre: " << song.getGenre() << endl;
+        os << "Duration (ms): " << song.getDuration() << endl;
+        os << "---------------";
+        return os;
     }
 };
 
@@ -321,5 +363,6 @@ void testSongs(){
     assert(testObject2.getGenre() == "Genre2");
     assert(testObject2.getDuration() == 240000);
 }
+
 
 #endif //CS2240_PROJECT_1_SONG_H
