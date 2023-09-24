@@ -46,9 +46,9 @@ int main(){
     cout << endl;
 
     // Testing stringQueue object
-    stringQueue.enqueue("first"); //
-    stringQueue.enqueue("aaron"); //
-    stringQueue.enqueue("luciano"); //
+    stringQueue.enqueue("first"); // add item with value "first" to queue
+    stringQueue.enqueue("aaron"); // add item with value "aaron" to queue
+    stringQueue.enqueue("luciano"); // add item with value "luciano" to queue
     stringQueue.dequeue(); // dequeue front value
     stringQueue.dequeue(); // dequeue front value
 
